@@ -154,7 +154,7 @@ export default function TaskEstimator() {
       if (remainingHours > 0) parts.push(`${remainingHours}h`)
 
       if (parts.length === 0) return null
-      return `${parts.join(" ")} (${testHoursCalc}h)`
+      return `${parts.join(" ")}`
     }
     return formatEffort(testDays, testHours, testMinutes)
   }, [testPercent, testDays, testHours, testMinutes, calcTestHours, formatEffort])
