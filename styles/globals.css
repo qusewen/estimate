@@ -1,7 +1,5 @@
-@import '../../node_modules/.pnpm/tailwindcss@4.2.0/node_modules/tailwindcss/dist/lib.d.mts';
-@import '../../node_modules/tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 :root {
   --background: oklch(1 0 0);
