@@ -15,7 +15,6 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Copy, Check, Calculator } from "lucide-react"
 
-// Мемоизированный компонент для группы полей ввода времени
 const TimeInputGroup = memo(({
                                d, h, m,
                                setD, setH, setM
@@ -25,7 +24,6 @@ const TimeInputGroup = memo(({
 }) => {
   const handleNumberInput = useCallback((setter: (v: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Разрешаем только числа и пустую строку
     if (value === "" || /^\d+$/.test(value)) {
       setter(value);
     }
@@ -194,7 +192,13 @@ export default function TaskEstimator() {
   const formatEstimatedBy = useCallback(() => {
     switch (estimatedBy) {
       case "tl": return "TL"
-      case "tl-fe": return "TL + FE"
+      case "pm": return "Project manager"
+      case "ba": return "Business Analytics"
+      case "tl-fe": return "Team Lead + FE"
+      case "tl-be": return "Team Lead + BE"
+      case "ba-tl": return "Business Analytics + Team Lead"
+      case "pm-tl": return "Project manager + Team Lead"
+
       default: return ""
     }
   }, [estimatedBy])
@@ -381,7 +385,15 @@ export default function TaskEstimator() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="tl">Team Lead</SelectItem>
+                    <SelectItem value="pm">Project manager</SelectItem>
+                    <SelectItem value="ba">Business Analytics</SelectItem>
+
                     <SelectItem value="tl-fe">Team Lead + FE</SelectItem>
+                    <SelectItem value="tl-be">Team Lead + BE</SelectItem>
+
+                    <SelectItem value="ba-tl">Business Analytics + Team Lead</SelectItem>
+                    <SelectItem value="pm-tl">Project manager + Team Lead</SelectItem>
+
                   </SelectContent>
                 </Select>
                 <p className="text-sm text-muted-foreground">
